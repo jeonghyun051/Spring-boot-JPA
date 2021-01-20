@@ -1,0 +1,26 @@
+server:
+  port: 8080
+  servlet:     context-path: /
+    encoding:      charset: utf-8
+      enabled: true
+
+spring:  mvc:    view:      prefix: /WEB-INF/views/
+      suffix: .jsp
+  datasource:      #Connection conn = DBConn.getConnection(); 각각 함수를 다 가지고 있음    driver-class-name: com.mysql.cj.jdbc.Driver   #PrepareseStatenebt pstpt = conn.prepareStatement(sql); 각각
+    url: jdbc:mysql://localhost:3306/springdb?serverTimezone=Asia/Seoul   #스프링이 처음 시작할 때 읽어서 커넥션 객체를 만든다 싱글톤으로 
+    username: springuser
+    password: bitc5600
+
+  # Java Persistence API : 자바로 데이터를 영구적으로 저장할 수 있는 API 
+  # API : HTTP 프로토콜 통신을 통해서 어떤 메서드에 접근하는 것
+  # JPA : 자바 코드로 데이터 영구히 저장할 수 있는 메서들의 집약체 (우리는 원래 영구히 저장할 때 DAO 만들었는데 내장되어있음)
+  # JAP 기반기술 hibernate => ORM이라는 기술을 가지고 있다.
+  # ORM(Object Relation Mapping) : 오브젝트를 내가 만들어서 릴레이션 할 수 있다. 원래 fk로 해야함 이것을 java object로 할 수 있음.
+  # 기능1 : 자바 오브젝트 생성하면 -> 테이블이 생성된다.
+
+  jpa:    hibernate:      ddl-auto: update   # create: 서버가 실행될때마다 테이블을 생성하라는 말
+      naming:        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl  # 모델에 있는 값을 그대로 / 2번째꺼는 방언
+    show-sql: true     #콘솔에 db관련을 보여달라는 말
+    properties:        #34~36 콘솔창 db결과문 정리하기       hibernate:
+       format_sql: true
+
